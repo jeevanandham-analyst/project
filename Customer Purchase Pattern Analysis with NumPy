@@ -1,0 +1,31 @@
+#Import the numpy library
+import numpy as np
+
+# Step 1: Create a NumPy array with dummy data
+# Rows = Customers, Columns = Monthly purchases (Jan to Apr)
+purchases = np.array([
+    [200, 220, 250, 275],   # Customer 1
+    [150, 180, 200, 230],   # Customer 2
+    [300, 310, 320, 330],   # Customer 3
+    [100, 120, 130, 150]    # Customer 4
+])
+
+# Step 2: Total spend per customer
+total_spend = purchases.sum(axis=1)
+print("Total Spend per Customer:", total_spend)
+
+# Step 3: Average monthly spend per customer
+avg_spend = purchases.mean(axis=1)
+print("Average Monthly Spend per Customer:", avg_spend)
+
+# Step 4: Average spend per month across all customers
+monthly_avg = purchases.mean(axis=0)
+print("Monthly Average Spend:", monthly_avg)
+
+# Step 5: Identify high-value customer (who spent the most overall)
+highest_spender = np.argmax(total_spend)
+print("High-Value Customer ID:", highest_spender + 1)  # +1 for human-friendly indexing
+
+# Step 6: Spending growth from Jan to Apr for each customer
+spending_growth = purchases[:, -1] - purchases[:, 0]
+print("Spending Growth (Jan to Apr):", spending_growth)
